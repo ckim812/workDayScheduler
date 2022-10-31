@@ -39,26 +39,60 @@ hours.forEach((hour, i) => {
       : "present"
   }></textarea>
                 <div class="saveBtn">
-                <i id="saveBtnHour${rowHour}" class="fas fa-save"></i>
+                <button><i id="saveBtnHour${rowHour}" class="fas fa-save"></i></button>
                 </div>
             </div>
         `;
 
   console.log(document.querySelector(`#activityHour${rowHour}`));
+
   document.querySelector(`#activityHour${rowHour}`).textContent = "Test";
 
   console.log(document.querySelector(`.saveBtnHour${rowHour}`));
-//   document
-//     .querySelector(`.saveBtnHour${rowHour}`)
-//     .addEventListener("click", () => console.log("this button works"));
+
+  document.querySelector("#saveBtnHour9").addEventListener("click", () => {
+    console.log("this button works");
+    localStorage.setItem(
+      hour - 9,
+      document.querySelector("#activityHour9").textContent
+    );
+  });
+
+  console.log(document.querySelector("#activityHour9").textContent);
+  let savedText = localStorage.getItem("hour-9");
 });
 
 console.log(rowHourArray);
-// console.log(document.querySelector("'.saveBtnHour' + rowHour"));
-console.log(document.querySelector("#activityHour9"));
-document.querySelector("#activityHour9").addEventListener("click", () => console.log("this button works"));
-// document.getElementById("saveBtnHour9").addEventListener("click", test = () => console.log("click works"));
+// console.log(document.querySelector(.saveBtnHour[1] + rowHourArray[1]));
 
-// rowHourArray.forEach(arrayHour => {
-//     document.querySelector(`#activityHour${arrayHour}`).addEventListener("click", saveActivity(arrayHour));
-// });
+console.log(document.querySelector("#activityHour9"));
+
+for (let i = 0; i < rowHourArray.length; i++) {
+  console.log(rowHourArray[i]);
+  console.log("#saveBtnHour" + i);
+}
+
+document
+  .querySelector("#saveBtnHour10")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour11")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour12")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour13")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour14")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour15")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour16")
+  .addEventListener("click", () => console.log("this button works"));
+document
+  .querySelector("#saveBtnHour17")
+  .addEventListener("click", () => console.log("this button works"));
