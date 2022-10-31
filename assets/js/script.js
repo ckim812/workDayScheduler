@@ -1,3 +1,4 @@
+// update day at top of page
 $("#currentDay").text(moment().format("llll"));
 
 const hours = [
@@ -13,6 +14,8 @@ const hours = [
 ];
 const currentHour = moment().format("H");
 const rowHourArray = [];
+let savedText = "";
+
 // var activityArray = [];
 
 // saveActivity = (activityHour) => {
@@ -45,21 +48,23 @@ hours.forEach((hour, i) => {
         `;
 
   console.log(document.querySelector(`#activityHour${rowHour}`));
-
   document.querySelector(`#activityHour${rowHour}`).textContent = "Test";
+  console.log(document.querySelector(`#activityHour${rowHour}`).textContent);
 
   console.log(document.querySelector(`.saveBtnHour${rowHour}`));
-
+  console.log(document.querySelector(".saveBtnHour9"));
+  
   document.querySelector("#saveBtnHour9").addEventListener("click", () => {
     console.log("this button works");
     localStorage.setItem(
-      hour - 9,
+      "hour9",
       document.querySelector("#activityHour9").textContent
-    );
+      );
+      savedText = localStorage.getItem("hour9");
   });
 
   console.log(document.querySelector("#activityHour9").textContent);
-  let savedText = localStorage.getItem("hour-9");
+  console.log(savedText);
 });
 
 console.log(rowHourArray);
@@ -67,10 +72,10 @@ console.log(rowHourArray);
 
 console.log(document.querySelector("#activityHour9"));
 
-for (let i = 0; i < rowHourArray.length; i++) {
-  console.log(rowHourArray[i]);
-  console.log("#saveBtnHour" + i);
-}
+// for (let i = 0; i < rowHourArray.length; i++) {
+//   console.log(rowHourArray[i]);
+//   console.log("#saveBtnHour" + i);
+// }
 
 document
   .querySelector("#saveBtnHour10")
