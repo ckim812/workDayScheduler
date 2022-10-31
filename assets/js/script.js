@@ -14,21 +14,22 @@ const hours = [
 ];
 const currentHour = moment().format("H");
 const rowHourArray = [];
-let savedText = "";
+var activityArray = [];
 
-// var activityArray = [];
-
-// saveActivity = (activityHour) => {
-//     localStorage.setItem(`activityForHour${activityHour}`, document.querySelector(`#activityHour${activityHour}`).textContent)
-//     activityArray[activityHour] = localStorage.getItem(`activityForHour${activityHour}`);
-// }
-
-// console.log(activityArray)
+// save event typed in textbox
+saveActivity = (activityHour) => {
+  localStorage.setItem(
+    `hour${activityHour}`,
+    document.querySelector(`#activityHour${activityHour}`).value
+  );
+  activityArray[activityHour - 9] = localStorage.getItem(`hour${activityHour}`);
+};
 
 hours.forEach((hour, i) => {
   let rowHour = i + 9;
   rowHourArray.push(rowHour);
-  console.log("rowHourArray = " + rowHourArray);
+
+  // Create Rows that change colors based on current time
   document.querySelector(".container").innerHTML += `
             <div class="row">
                 <div class="hour">
@@ -46,58 +47,11 @@ hours.forEach((hour, i) => {
                 </div>
             </div>
         `;
-
-  console.log(document.querySelector(`#activityHour${rowHour}`));
-  document.querySelector(`#activityHour${rowHour}`).textContent = "Test";
-  console.log(document.querySelector(`#activityHour${rowHour}`).textContent);
-
-  console.log(document.querySelector(`.saveBtnHour${rowHour}`));
-  console.log(document.querySelector(".saveBtnHour9"));
-  
-  document.querySelector("#saveBtnHour9").addEventListener("click", () => {
-    console.log("this button works");
-    localStorage.setItem(
-      "hour9",
-      document.querySelector("#activityHour9").textContent
-      );
-      savedText = localStorage.getItem("hour9");
-  });
-
-  console.log(document.querySelector("#activityHour9").textContent);
-  console.log(savedText);
 });
 
-console.log(rowHourArray);
-// console.log(document.querySelector(.saveBtnHour[1] + rowHourArray[1]));
-
-console.log(document.querySelector("#activityHour9"));
-
-// for (let i = 0; i < rowHourArray.length; i++) {
-//   console.log(rowHourArray[i]);
-//   console.log("#saveBtnHour" + i);
-// }
-
-document
-  .querySelector("#saveBtnHour10")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour11")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour12")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour13")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour14")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour15")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour16")
-  .addEventListener("click", () => console.log("this button works"));
-document
-  .querySelector("#saveBtnHour17")
-  .addEventListener("click", () => console.log("this button works"));
+for (let i = 0; i < rowHourArray.length; i++) {
+  document.querySelector(`#saveBtnHour${i+9}`).addEventListener("click", () => {
+    console.log("this button works");
+    saveActivity(`${i+9}`);
+  });
+}
