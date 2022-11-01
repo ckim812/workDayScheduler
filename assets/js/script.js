@@ -17,7 +17,6 @@ const hours = [
 ];
 const currentHour = moment().format("H");
 const rowHourArray = [];
-var activityArray = [];
 
 // save event typed in textbox
 saveActivity = (activityHour) => {
@@ -25,7 +24,7 @@ saveActivity = (activityHour) => {
     `hour${activityHour}`,
     document.querySelector(`#activityHour${activityHour}`).value
   );
-  activityArray[activityHour - 9] = localStorage.getItem(`hour${activityHour}`);
+  alert("Event Successfully Saved!");
 };
 
 // clear saved events from local storage
@@ -36,6 +35,9 @@ clearActivity = () => {
   for (let i = 0; i < rowHourArray.length; i++) {
     document.querySelector(`#activityHour${i + 9}`).textContent =
       localStorage.getItem(`hour${i + 9}`);
+  }
+  if (localStorage.length === 0) {
+    alert("All Events Cleared.");
   }
 };
 
