@@ -50,6 +50,8 @@ hours.forEach((hour, i) => {
                 </div>
             </div>
         `;
+  document.querySelector(`#activityHour${rowHour}`).textContent =
+    localStorage.getItem(`hour${rowHour}`);
 });
 
 // add event listeners for each save button
