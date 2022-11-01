@@ -1,5 +1,8 @@
 // update day at top of page
-$("#currentDay").text(moment().format("llll"));
+setInterval(
+  () => $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a")),
+  1000
+);
 
 const hours = [
   "9AM",
@@ -49,9 +52,12 @@ hours.forEach((hour, i) => {
         `;
 });
 
+// add event listeners for each save button
 for (let i = 0; i < rowHourArray.length; i++) {
-  document.querySelector(`#saveBtnHour${i+9}`).addEventListener("click", () => {
-    console.log("this button works");
-    saveActivity(`${i+9}`);
-  });
+  document
+    .querySelector(`#saveBtnHour${i + 9}`)
+    .addEventListener("click", () => {
+      console.log("this button works");
+      saveActivity(`${i + 9}`);
+    });
 }
