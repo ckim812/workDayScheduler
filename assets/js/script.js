@@ -46,7 +46,7 @@ hours.forEach((hour, i) => {
   // Create Rows that change colors based on current time
   document.querySelector(".container").innerHTML += `
             <div class="row">
-                <div class="hour">
+                <div class="hour text-center font-weight-bold">
                     ${hour}
                 </div>
                 <textarea id="activityHour${rowHour}" class=${
@@ -57,7 +57,7 @@ hours.forEach((hour, i) => {
       : "present"
   }></textarea>
                 <div class="saveBtn">
-                <button><i id="saveBtnHour${rowHour}" class="fas fa-save"></i></button>
+                <button type="button" class="btn btn-secondary"><i id="saveBtnHour${rowHour}" class="fas fa-save"></i></button>
                 </div>
             </div>
         `;
