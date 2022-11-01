@@ -28,6 +28,17 @@ saveActivity = (activityHour) => {
   activityArray[activityHour - 9] = localStorage.getItem(`hour${activityHour}`);
 };
 
+// clear saved events from local storage
+clearActivity = () => {
+  if (localStorage.length > 0) {
+    localStorage.clear();
+  }
+  for (let i = 0; i < rowHourArray.length; i++) {
+    document.querySelector(`#activityHour${i + 9}`).textContent =
+      localStorage.getItem(`hour${i + 9}`);
+  }
+};
+
 hours.forEach((hour, i) => {
   let rowHour = i + 9;
   rowHourArray.push(rowHour);
@@ -59,7 +70,10 @@ for (let i = 0; i < rowHourArray.length; i++) {
   document
     .querySelector(`#saveBtnHour${i + 9}`)
     .addEventListener("click", () => {
-      console.log("this button works");
       saveActivity(`${i + 9}`);
     });
 }
+
+document
+  .querySelector("#clearEvents")
+  .addEventListener("click", () => clearActivity());
